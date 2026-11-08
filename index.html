@@ -943,8 +943,6 @@
         document.body.removeChild(link);
         setTimeout(() => URL.revokeObjectURL(url), 1500);
 
-        showSoftToast('⬇️ تم تنزيل ملف الموقع (index.html) بنجاح! ضعيه في مجلد وارفعيه على Netlify Drop 🌷');
-      } catch (err) {
         showSoftToast('⚠️ تعذر التنزيل التلقائي، يمكنك حفظ الصفحة من المتصفح (Ctrl + S).');
       }
     }
