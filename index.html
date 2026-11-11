@@ -1842,6 +1842,382 @@
             }
         });
     });
+  <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achieve Your Dream - حائط مواهب تستحق الرؤية</title>
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: #1e222d;
+            --accent-color: #bb86fc;
+            --text-color: #e0e0e0;
+            --danger-color: #cf6679;
+            --success-color: #03dac6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 🔒 حماية الحائط من التحديد وسرقة النصوص 🔒 */
+        .protected-wall {
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10+ and Edge */
+            user-select: none; /* Standard syntax */
+        }
+
+        /* تنبيه حماية الحقوق الفكرية */
+        .legal-warning {
+            background: rgba(207, 102, 121, 0.15);
+            border: 1px solid var(--danger-color);
+            color: #ff8a80;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+        }
+
+        /* تصميم استمارة تقديم الموهبة */
+        .form-container, .admin-container {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background: #121212;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        button {
+            background: var(--accent-color);
+            color: #000;
+            font-weight: bold;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        /* تصميم كروت حائط المواهب */
+        .talents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .talent-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2a2f3d;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .talent-media {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #000;
+            pointer-events: none; /* منع النقر وسحب الصور */
+        }
+
+        .talent-info {
+            padding: 15px;
+        }
+
+        .talent-author {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .talent-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .talent-desc {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* لوحة التحكم بالإدارة */
+        .admin-item {
+            background: #121212;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-approve {
+            background: var(--success-color);
+            color: #000;
+            padding: 6px 12px;
+            width: auto;
+        }
+
+        .btn-delete {
+            background: var(--danger-color);
+            color: #fff;
+            padding: 6px 12px;
+            width: auto;
+        }
+
+        .empty-wall-msg {
+            text-align: center;
+            color: #777;
+            font-style: italic;
+            grid-column: 1 / -1;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. استمارة تقديم الموهبة -->
+    <div class="form-container">
+        <h2 style="text-align: center; margin-top:0;">تقديم موهبة جديدة</h2>
+        <form id="submissionForm">
+            <div class="form-group">
+                <label>اسم الموهوب / الحساب:</label>
+                <input type="text" id="talentName" required placeholder="أدخل اسمك أو اسمك الفني">
+            </div>
+
+            <div class="form-group">
+                <label>عنوان العمل أو الموهبة:</label>
+                <input type="text" id="talentTitle" required placeholder="مثال: لوحة زيتية / مونتاج سينمائي / نص أدبي">
+            </div>
+
+            <div class="form-group">
+                <label>وصف مختصر للموهبة:</label>
+                <textarea id="talentDesc" rows="3" required placeholder="اكتب تفاصيل عن موهبتك..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>رابط الصورة / الفيديو أو الملف الإبداعي:</label>
+                <input type="url" id="talentMedia" placeholder="https://example.com/image.jpg" required>
+            </div>
+
+            <!-- 🟢 اختيار الخصوصية وإظهار الهوية 🟢 -->
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="isAnonymous">
+                <label for="isAnonymous">أفضل البقاء مجهولاً (Anonymous) في حال نشر عملي بالحائط لحماية خافيتي.</label>
+            </div>
+
+            <button type="submit">إرسال للمراجعة والتقييم</button>
+        </form>
+    </div>
+
+    <!-- 2. لوحة الإدارة (خاصة بكِ فقط) -->
+    <div class="admin-container">
+        <h3 style="margin-top: 0;">⚙️ لوحة الإدارة: قبول ونشر المواهب في الحائط</h3>
+        <div id="adminList">
+            <!-- سيتم تحميل طلبات المواهب هنا مراجعتها -->
+        </div>
+    </div>
+
+    <hr style="border: 0.5px solid #333; margin: 40px 0;">
+
+    <!-- 3. حائط مواهب تستحق الرؤية (مع الحماية المشددة) -->
+    <div class="protected-wall" id="protectedWall">
+        
+        <!-- التنبيه القانوني المشدد -->
+        <div class="legal-warning">
+            ⚖️ **تنبيه قانوني وحماية حقوق الملكية الفكرية:** جميع الأعمال المعروضة في هذا الحائط محمية بموجب حقوق النشر الدولية والمحلية. يمنع منعاً باتاً نسخ، حفظ، تصوير، أو إعادة نشر أي محتوى هنا. أي انتهاك سيعرض صاحبه للمسائلة القانونية المباشرة.
+        </div>
+
+        <h2 class="section-title">🌟 حائط: مواهب تستحق الرؤية 🌟</h2>
+
+        <!-- الشبكة التي تعرض المواهب المقبولة -->
+        <div class="talents-grid" id="talentsGrid">
+            <div class="empty-wall-msg">الحائط فاضي حالياً.. في انتظار مواهبكم العبقرية لتظهر هنا قريباً! ✨</div>
+        </div>
+    </div>
+
+    <script>
+        // مصفوفات لتخزين البيانات محلياً (تقدري تربطيها بـ Firebase أو داتابيز بعدين)
+        let submissions = [];
+        let approvedTalents = [];
+
+        // 1. التعامل مع تقديم الاستمارة
+        document.getElementById('submissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newTalent = {
+                id: Date.now(),
+                name: document.getElementById('talentName').value,
+                title: document.getElementById('talentTitle').value,
+                desc: document.getElementById('talentDesc').value,
+                media: document.getElementById('talentMedia').value,
+                isAnon: document.getElementById('isAnonymous').checked
+            };
+
+            submissions.push(newTalent);
+            alert('تم إرسال موهبتك بنجاح! سيتم مراجعتها من قبل الإدارة لنشرها في حائط المواهب.');
+            this.reset();
+            renderAdminPanel();
+        });
+
+        // 2. تحديث لوحة التحكم للإدارة
+        function renderAdminPanel() {
+            const adminList = document.getElementById('adminList');
+            adminList.innerHTML = '';
+
+            if(submissions.length === 0) {
+                adminList.innerHTML = '<p style="color: #777; font-size: 0.9rem;">لا توجد طلبات معلقة حالياً.</p>';
+                return;
+            }
+
+            submissions.forEach(item => {
+                const displayName = item.isAnon ? "مجهول (طلب إخفاء الهوية)" : item.name;
+                const div = document.createElement('div');
+                div.className = 'admin-item';
+                div.innerHTML = `
+                    <div>
+                        <strong>${item.title}</strong> - بواسطة: <span style="color:var(--accent-color)">${displayName}</span>
+                    </div>
+                    <div>
+                        <button class="btn-approve" onclick="approveTalent(${item.id})">قبول في الحائط</button>
+                        <button class="btn-delete" onclick="deleteSubmission(${item.id})">رفض</button>
+                    </div>
+                `;
+                adminList.appendChild(div);
+            });
+        }
+
+        // 3. قبول الموهبة ونشرها في الحائط
+        function approveTalent(id) {
+            const index = submissions.findIndex(item => item.id === id);
+            if (index !== -1) {
+                approvedTalents.push(submissions[index]);
+                submissions.splice(index, 1);
+                renderAdminPanel();
+                renderWall();
+            }
+        }
+
+        // 4. رفض / حذف الموهبة
+        function deleteSubmission(id) {
+            submissions = submissions.filter(item => item.id !== id);
+            renderAdminPanel();
+        }
+
+        // 5. عرض الحائط للجميع
+        function renderWall() {
+            const grid = document.getElementById('talentsGrid');
+            grid.innerHTML = '';
+
+            if (approvedTalents.length === 0) {
+                grid.innerHTML = '<div class="empty-wall-msg">الحائط فاضي حالياً.. في انتظار مواهبكم العبقرية لتظهر هنا قريباً! ✨</div>';
+                return;
+            }
+
+            approvedTalents.forEach(item => {
+                // إظهار الاسم أو وضع مجهول بناءً على رغبة صاحب الموهبة
+                const authorDisplay = item.isAnon ? "🎭 موهبة مجهولة (Anonymous)" : `👤 ${item.name}`;
+
+                const card = document.createElement('div');
+                card.className = 'talent-card';
+                card.innerHTML = `
+                    <img src="${item.media}" class="talent-media" alt="محتوى موهبة" oncontextmenu="return false;">
+                    <div class="talent-info">
+                        <div class="talent-author">${authorDisplay}</div>
+                        <div class="talent-title">${item.title}</div>
+                        <div class="talent-desc">${item.desc}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // -------------------------------------------------------------
+        // 🔒 6. أكواد الحماية والأمان ومنع السرقة والسكرين شوت 🔒
+        // -------------------------------------------------------------
+
+        // منع كليك يمين على الحائط
+        document.getElementById('protectedWall').addEventListener('contextmenu', e => e.preventDefault());
+
+        // منع اختصارات لوحة المفاتيح للطباعة وحفظ الصفحة واقتطاع الشاشة
+        document.addEventListener('keydown', function(e) {
+            // منع Ctrl+P (طباعة)، Ctrl+S (حفظ)، Ctrl+U (عرض الكود)
+            if (e.ctrlKey && (e.key === 'p' || e.key === 's' || e.key === 'u')) {
+                e.preventDefault();
+                alert('عذراً، حفظ أو طباعة محتوى حائط المواهب غير مسموح به لحماية الحقوق الفكرية.');
+            }
+            // منع PrintScreen (لقطة شاشة)
+            if (e.key === 'PrintScreen') {
+                e.preventDefault();
+                alert('تنبيه: محاولات تصوير الشاشة لحائط المواهب محظورة لحماية الحقوق الفكرية.');
+            }
+        });
+
+        // منع سحب الصور (Drag and Drop)
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        // تشغيل لوحة التحكم لأول مرة
+        renderAdminPanel();
+    
+
 </script>
   
 </body></html>
