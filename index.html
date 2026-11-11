@@ -264,6 +264,27 @@
           </div>
         </div>
       </div>
+      <!-- 🌟 حائط مواهب تستحق الرؤية في منتصف الصفحة الرئيسية 🌟 -->
+<section id="protectedTalentWall" style="max-width: 900px; margin: 40px auto; padding: 25px; background: #ffffff; border-radius: 16px; border: 1px solid #f2e3e8; box-shadow: 0 4px 20px rgba(232, 143, 162, 0.08); position: relative; user-select: none; -webkit-user-select: none;">
+    
+    <!-- تنبيه الملكية الفكرية والحماية القانونية -->
+    <div style="background: #fff4f6; border-right: 4px solid #e88fa2; padding: 12px 18px; border-radius: 8px; margin-bottom: 25px; color: #8a3b4e; font-size: 0.88rem; line-height: 1.6;">
+        ⚖️ <strong>تنبيه حماية الحقوق الفكرية:</strong> جميع الأعمال المعروضة على هذا الحائط هي ملك لأصحابها ومحمية قانونياً. يُحظر تماماً نسخ، حفظ، تصوير، أو نقل المحتوى بدون إذن كتابي مُسبق، وأي انتهاك سيعرض صاحبه للملاحقة القانونية.
+    </div>
+
+    <div style="text-align: center; margin-bottom: 25px;">
+        <h2 style="color: #4a3e43; font-size: 1.6rem; margin-bottom: 6px;">🌟 حائط: مواهب تستحق الرؤية 🌟</h2>
+        <p style="color: #8c7a82; font-size: 0.95rem; margin: 0;">منصة احتضان واستعراض الإبداع البشري المتميز</p>
+    </div>
+
+    <!-- شبكة عرض المواهب -->
+    <div id="publicTalentsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: #faf6f8; border-radius: 12px; color: #a39299; font-style: italic;">
+            ✨ الحائط فارغ حالياً.. في انتظار اعتماد أولى المواهب المميزة! ✨
+        </div>
+    </div>
+</section>
+
 
       <!-- رسائل الدعم والتشجيع + قسم Buy us a coffee -->
       <div class="grid md:grid-cols-3 gap-6">
@@ -462,6 +483,14 @@
               <span>أرغب أيضاً في الترشح لفرص المنح الدراسية والرعاية التعليمية الشاملة (سفر ومعيشة) 🎓</span>
             </label>
           </div>
+          <!-- خيار البقاء مجهولاً داخل استمارة التقديم -->
+<div style="margin: 15px 0; background: #fff8f9; padding: 12px 15px; border-radius: 10px; border: 1px dashed #f4b4c4; display: flex; align-items: center; gap: 10px;">
+    <input type="checkbox" id="talentIsAnon" style="width: 18px; height: 18px; accent-color: #e88fa2; cursor: pointer;">
+    <label for="talentIsAnon" style="cursor: pointer; color: #5a4b51; font-size: 0.9rem; font-weight: 600;">
+        🎭 أُفضل البقاء مجهولاً (Anonymous) في حال عرض موهبتي بالحائط العام لحماية خصوصيتي.
+    </label>
+</div>
+
 
           <div class="flex justify-end">
             <button type="submit" class="px-7 py-3 rounded-2xl bg-dream-charcoal text-white text-xs sm:text-sm font-medium hover:opacity-90 transition shadow-md cursor-pointer">
@@ -648,13 +677,21 @@
           <h2 class="font-serif text-3xl font-bold mt-1">أهلاً بكِ يا ملك — كل ما في الموقع تحت إشرافك</h2>
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <button onclick="downloadWebsiteHtmlFile()" class="px-5 py-2.5 rounded-xl bg-dream-rose text-white hover:opacity-95 text-xs font-bold shadow-md flex items-center gap-1.5 cursor-pointer">
-            <span>⬇️</span>
-            <span>تحميل ملف الموقع الجاهز للنشر (index.html)</span>
+      
           </button>
           <button onclick="lockAdminPanel()" class="px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs cursor-pointer">🔒 قفل لوحة المديرة</button>
         </div>
       </div>
+      <!-- قسم إدارة ومراجعة ونشر المواهب في لوحة التحكم الخاصة بملك -->
+<div style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #eedde2; margin-top: 20px;">
+    <h3 style="color: #4a3e43; margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+        🎨 مراجعة ونشر المواهب بالحائط العام
+    </h3>
+    <div id="adminPendingTalentsList">
+        <p style="color: #9c8c93; font-size: 0.9rem;">لا توجد مواهب جديدة بانتظار الاعتماد حالياً.</p>
+    </div>
+</div>
+
 
       <!-- بطاقة إرشاد النشر السريع للمديرة ملك -->
       <div class="rounded-3xl bg-gradient-to-l from-dream-blush/70 via-dream-cream to-dream-sage/70 p-6 border border-dream-rose/30 flex flex-wrap items-center justify-between gap-4">
@@ -662,11 +699,7 @@
           <span class="text-xs font-bold text-dream-roseDark">🚀 جاهز للنشر على الإنترنت في دقيقة واحدة</span>
           <h3 class="font-serif text-xl font-bold text-dream-charcoal">حمّلي ملف (index.html) وارفعيه مباشرة على Netlify Drop</h3>
           <p class="text-xs text-dream-muted leading-relaxed">
-            اضغطي على زر التحميل لتحفظي نسخة الموقع الكاملة على جهازكِ بصيغة <code class="bg-white px-1.5 py-0.5 rounded font-bold">index.html</code>، ثم ضعيه داخل مجلد واسحبيه إلى <a href="https://app.netlify.com/drop" target="_blank" rel="noopener noreferrer" class="underline font-bold text-dream-sageDark">app.netlify.com/drop</a> ليصبح لديكِ رابط رسمي فوراً.
-          </p>
-        </div>
-        <button onclick="downloadWebsiteHtmlFile()" class="px-6 py-3 rounded-2xl bg-dream-charcoal text-white text-xs font-bold hover:opacity-90 transition shadow-md cursor-pointer">
-          ⬇️ تنزيل index.html الآن
+
         </button>
       </div>
 
